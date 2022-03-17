@@ -34,10 +34,20 @@ class MainActivity : BaseActivity() {
         return lottoNumbers
     }
 
+    fun getShuffleLottoNumbers(): MutableList<Int> {
+        val list = mutableListOf<Int>()
+
+        for (number in 1..45) {
+            list.add(number)
+        }
+        list.shuffle()
+        return list.subList(0, 6)
+    }
+
     override fun setupEvents() {
         binding.randomCard.setOnClickListener {
             val myIntent = Intent(mContext, ResultActivity::class.java)
-            myIntent.putIntegerArrayListExtra("result", ArrayList(getRandomLottoNumbers()))
+            myIntent.putIntegerArrayListExtra("result", ArrayList(getShuffleLottoNumbers()))
             startActivity(myIntent)
         }
         binding.constellationCard.setOnClickListener {
