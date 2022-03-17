@@ -4,6 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.icox.lotto.databinding.ActivityNameBinding
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.random.Random
 
 class NameActivity : BaseActivity() {
@@ -22,7 +25,8 @@ class NameActivity : BaseActivity() {
         for (number in 1..45) {
             list.add(number)
         }
-        list.shuffle(Random(name.hashCode().toLong()))
+        val targetString = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA).format(Date()) + name
+        list.shuffle(Random(targetString.hashCode().toLong()))
         return list.subList(0, 6)
     }
 
