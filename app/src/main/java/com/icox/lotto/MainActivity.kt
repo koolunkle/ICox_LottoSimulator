@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.icox.lotto.databinding.ActivityMainBinding
+import java.util.*
 
 class MainActivity : BaseActivity() {
 
@@ -16,9 +17,23 @@ class MainActivity : BaseActivity() {
         setValues()
     }
 
+    fun getRandomLottoNumber(): Int {
+        return Random().nextInt(45) + 1
+    }
+
+    fun getRandomLottoNumbers(): MutableList<Int> {
+        val lottoNumbers = mutableListOf<Int>()
+
+        for (i in 1..6) {
+            lottoNumbers.add(getRandomLottoNumber())
+        }
+        return lottoNumbers
+    }
+
     override fun setupEvents() {
         binding.randomCard.setOnClickListener {
             val myIntent = Intent(mContext, ResultActivity::class.java)
+            myIntent.putIntegerArrayListExtra("result", ArrayList(getRandomLottoNumbers()))
             startActivity(myIntent)
         }
         binding.constellationCard.setOnClickListener {

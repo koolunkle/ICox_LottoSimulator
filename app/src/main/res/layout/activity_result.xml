@@ -25,42 +25,42 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imgBall01"
+                android:id="@+id/imageView01"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:src="@drawable/ball_01" />
 
             <ImageView
-                android:id="@+id/imgBall02"
+                android:id="@+id/imageView02"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:src="@drawable/ball_03" />
 
             <ImageView
-                android:id="@+id/imgBall03"
+                android:id="@+id/imageView03"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:src="@drawable/ball_10" />
 
             <ImageView
-                android:id="@+id/imgBall04"
+                android:id="@+id/imageView04"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:src="@drawable/ball_11" />
 
             <ImageView
-                android:id="@+id/imgBall05"
+                android:id="@+id/imageView05"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:src="@drawable/ball_21" />
 
             <ImageView
-                android:id="@+id/imgBall06"
+                android:id="@+id/imageView06"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
