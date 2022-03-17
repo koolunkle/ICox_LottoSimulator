@@ -2,6 +2,8 @@ package com.icox.lotto
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.icox.lotto.databinding.ActivityNameBinding
 import java.text.SimpleDateFormat
@@ -32,6 +34,10 @@ class NameActivity : BaseActivity() {
 
     override fun setupEvents() {
         binding.btnGo.setOnClickListener {
+            if (TextUtils.isEmpty(binding.edtName.text.toString())) {
+                Toast.makeText(mContext, "이름을 입력하세요", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             val myIntent = Intent(mContext, ResultActivity::class.java)
             myIntent.putIntegerArrayListExtra(
                 "result",
