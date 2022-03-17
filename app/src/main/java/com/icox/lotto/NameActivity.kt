@@ -6,10 +6,8 @@ import android.text.TextUtils
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.icox.lotto.databinding.ActivityNameBinding
-import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.random.Random
 
 class NameActivity : BaseActivity() {
 
@@ -22,16 +20,6 @@ class NameActivity : BaseActivity() {
         setValues()
     }
 
-    fun getLottoNumbersFromHash(name: String): MutableList<Int> {
-        val list = mutableListOf<Int>()
-        for (number in 1..45) {
-            list.add(number)
-        }
-        val targetString = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA).format(Date()) + name
-        list.shuffle(Random(targetString.hashCode().toLong()))
-        return list.subList(0, 6)
-    }
-
     override fun setupEvents() {
         binding.btnGo.setOnClickListener {
             if (TextUtils.isEmpty(binding.edtName.text.toString())) {
@@ -41,7 +29,7 @@ class NameActivity : BaseActivity() {
             val myIntent = Intent(mContext, ResultActivity::class.java)
             myIntent.putIntegerArrayListExtra(
                 "result",
-                ArrayList(getLottoNumbersFromHash(binding.edtName.text.toString()))
+                ArrayList(LottoNumberMaker.getLottoNumbersFromHash(binding.edtName.text.toString()))
             )
             myIntent.putExtra("name", binding.edtName.text.toString())
             startActivity(myIntent)

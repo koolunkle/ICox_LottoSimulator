@@ -17,37 +17,12 @@ class MainActivity : BaseActivity() {
         setValues()
     }
 
-    fun getRandomLottoNumber(): Int {
-        return Random().nextInt(45) + 1
-    }
-
-    fun getRandomLottoNumbers(): MutableList<Int> {
-        val lottoNumbers = mutableListOf<Int>()
-
-        for (i in 1..6) {
-            var number = 0
-            do {
-                number = getRandomLottoNumber()
-            } while (lottoNumbers.contains(number))
-            lottoNumbers.add(number)
-        }
-        return lottoNumbers
-    }
-
-    fun getShuffleLottoNumbers(): MutableList<Int> {
-        val list = mutableListOf<Int>()
-
-        for (number in 1..45) {
-            list.add(number)
-        }
-        list.shuffle()
-        return list.subList(0, 6)
-    }
-
     override fun setupEvents() {
         binding.randomCard.setOnClickListener {
             val myIntent = Intent(mContext, ResultActivity::class.java)
-            myIntent.putIntegerArrayListExtra("result", ArrayList(getShuffleLottoNumbers()))
+            myIntent.putIntegerArrayListExtra(
+                "result", ArrayList(LottoNumberMaker.getShuffleLottoNumbers())
+            )
             startActivity(myIntent)
         }
         binding.constellationCard.setOnClickListener {

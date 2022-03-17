@@ -5,8 +5,6 @@ import android.text.TextUtils
 import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import com.icox.lotto.databinding.ActivityResultBinding
-import java.text.SimpleDateFormat
-import java.util.*
 
 class ResultActivity : BaseActivity() {
 
@@ -19,18 +17,6 @@ class ResultActivity : BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_result)
         setupEvents()
         setValues()
-        val resultLabel = binding.resultLabel
-        val result = intent.getIntegerArrayListExtra("result")
-        val name = intent.getStringExtra("name")
-        val constellation = intent.getStringExtra("constellation")
-        resultLabel.text = "랜덤으로 생성된\n로또 번호입니다"
-        if (!TextUtils.isEmpty(name)) {
-            resultLabel.text =
-                "${name} 님의\n로또 번호입니다"
-        }
-        result?.let {
-            updateLottoBallImage(result.sortedBy { it })
-        }
     }
 
     fun updateLottoBallImage(result: List<Int>) {
@@ -55,6 +41,21 @@ class ResultActivity : BaseActivity() {
     }
 
     override fun setValues() {
-
+        val resultLabel = binding.resultLabel
+        val result = intent.getIntegerArrayListExtra("result")
+        val name = intent.getStringExtra("name")
+        val constellation = intent.getStringExtra("constellation")
+        resultLabel.text = "랜덤으로 생성된\n로또 번호입니다"
+        if (!TextUtils.isEmpty(name)) {
+            resultLabel.text =
+                "${name} 님의\n로또 번호입니다"
+        }
+        if (!TextUtils.isEmpty(constellation)) {
+            resultLabel.text =
+                "${constellation} 의\n로또 번호입니다"
+        }
+        result?.let {
+            updateLottoBallImage(result.sortedBy { it })
+        }
     }
 }
