@@ -30,6 +30,7 @@
                 android:src="@drawable/constellation" />
 
             <TextView
+                android:id="@+id/txtConstellation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="쌍둥이자리"
